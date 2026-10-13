@@ -10,15 +10,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
 
     steps:
       - name: Получение исходного кода
         uses: actions/checkout@v4
 
-      - name: Настройка Python 3.12
+      - name: Настройка Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
+
 
       - name: Установка зависимостей
         run: |
