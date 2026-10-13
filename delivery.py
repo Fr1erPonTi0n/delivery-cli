@@ -25,7 +25,7 @@ def calculate_delivery(subtotal, express=False):
 
     if subtotal < REDUCED_THRESHOLD:
         cost = STANDARD_PRICE
-    elif subtotal <= FREE_THRESHOLD:
+    elif subtotal < FREE_THRESHOLD:
         cost = REDUCED_PRICE
     else:
         cost = FREE_PRICE
